@@ -8,7 +8,7 @@ import (
 func main() {
 		
 	for {
-		fmt.Println("Selamat datang di aplikasi jadi jadian ini!")
+		fmt.Println("Halo! silakan masukan perintah dengan angka!")
 		fmt.Println("Silakan pilih menu berikut:")
 		fmt.Println("1. Login")
 		fmt.Println("2. Register")
