@@ -4,11 +4,21 @@ import (
 	"fmt"
 	"os"
 	"auth_flow/user"
+	"crypto/rand"
 )
+
+func generateID() string {
+	id := make([]byte, 8)
+	_, err := rand.Read(id)
+	if err != nil {
+		panic(err)
+	}
+	return fmt.Sprintf("%x", id)
+}
 
 func RegisterUser() user.User {
 	user := user.User  {
-		ID:       0,
+		ID:       generateID(),
 		Email:    "",
 		Password: "",
 	}
