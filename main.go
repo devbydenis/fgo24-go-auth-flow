@@ -2,11 +2,14 @@ package main
 
 import (
 	"auth_flow/register"
+	"auth_flow/user"
 	"fmt"
 )
+	var UserList user.UserList
 
 func main() {
-		
+	
+	// fmt.Println(UserList)
 	for {
 		fmt.Println("Halo! silakan masukan perintah dengan angka!")
 		fmt.Println("Silakan pilih menu berikut:")
@@ -26,7 +29,8 @@ func main() {
 		case 1:
 			fmt.Println("Login")
 		case 2:
-			register.RegisterUser()
+			UserList.AddUser(register.RegisterUser())
+			fmt.Println("Userlist saat ini: ", UserList)
 		case 3:
 			fmt.Println("Forget Password")
 		case 4:
