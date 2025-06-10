@@ -1,50 +1,41 @@
 package main
 
 import (
+	"auth_flow/register"
 	"fmt"
-	"crypto/md5"
-	"encoding/hex"
-	"io"
 )
 
-type User struct {
-	email string
-	password  string
-}
-
-func (u User) encryptPassword() string {
-	hasher := md5.New()
-	 _, err := io.WriteString(hasher, u.password)
-	 if err != nil {
-	  panic(err)
-	 }
-	return hex.EncodeToString(hasher.Sum(nil))
-}
-
-func registerUser() {
-	user := User{
-		email:    "",
-		password: "",
-	}
-	defer fmt.Println("INFO: Berhasil register")
-	fmt.Println("Masukan email untuk register")
-	_, err := fmt.Scanln(&user.email)
-	if err != nil {
-		fmt.Println("Email tidak boleh kosong")
-		return
-	}
-	
-	fmt.Println("Masukan password untuk register")
-	_, err = fmt.Scanln(&user.password)
-	if err != nil {
-		fmt.Println("Password tidak boleh kosong")
-		return
-	}
-	
-	fmt.Println("Email:", user.email)
-	fmt.Println("Password:", user.encryptPassword())
-}
-
 func main() {
-	registerUser()
+		
+	for {
+		fmt.Println("Selamat datang di aplikasi jadi jadian ini!")
+		fmt.Println("Silakan pilih menu berikut:")
+		fmt.Println("1. Login")
+		fmt.Println("2. Register")
+		fmt.Println("3. Forget Password")
+		fmt.Println("4. Exit")
+		
+		var input int
+		_, err := fmt.Scanln(&input)
+		if err != nil {
+			fmt.Println("Input tidak valid. Masukin input yang valid!")
+			return
+		}
+		
+		switch choice := input; choice {
+		case 1:
+			fmt.Println("Login")
+		case 2:
+			register.RegisterUser()
+		case 3:
+			fmt.Println("Forget Password")
+		case 4:
+			fmt.Println("Exit")
+			return
+		default:
+			fmt.Println("Pilihan hanya ada 1 - 4. Pilihan lu orang ga valid!")
+			return
+		}
+	
+	}
 }
