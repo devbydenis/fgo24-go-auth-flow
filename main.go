@@ -1,6 +1,7 @@
 package main
 
 import (
+	"auth_flow/login"
 	"auth_flow/register"
 	"auth_flow/user"
 	"fmt"
@@ -27,7 +28,7 @@ func main() {
 		
 		switch choice := input; choice {
 		case 1:
-			fmt.Println("Login")
+			UserList.HandleLoginUser(login.LoginUser())
 		case 2:
 			UserList.AddUser(register.RegisterUser())
 			fmt.Println("Userlist saat ini: ", UserList)

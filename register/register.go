@@ -44,14 +44,12 @@ func RegisterUser() user.User {
 		fmt.Println("Konfirmasi password tidak boleh kosong")
 		os.Exit(0)
 	}
-	
 	if user.Password != confirm {
 		fmt.Println("Password tidak cocok")
 		os.Exit(0)
 	}
 	
-	fmt.Println("INFO: Berhasil register")
 	user.Password = user.EncryptPassword()
-	// fmt.Println(user)
+	
 	return user
 }
